@@ -1,1 +1,20 @@
+div.grid {
+  height: 20px;
+  width: 20px;
+}
 
+img.location {
+  height: 15px;
+  width: 15px;
+  position: relative;
+  bottom: 4px;
+  left: 1px;
+}
+
+img.destination {
+  height: 15px;
+  width: 15px;
+  position: relative;
+  bottom: 4px;
+  left: 1px;
+}

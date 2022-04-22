@@ -1,0 +1,5 @@
+export enum Actions {
+  SELECT_START_POSITIONl,
+  SELECT_END_POSITION,
+  CREATE_WALL
+}
