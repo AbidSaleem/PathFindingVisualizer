@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, HostListener, Input, OnInit } from '@angular/core';
+import { Actions } from '../../enums/actions.enum';
 import {NodeModel} from '../../models/node.model';
 
 @Component({
@@ -14,6 +15,37 @@ export class GridComponent implements OnInit {
    }
 
   ngOnInit(): void {
+  }
+
+  @HostListener("mousedown")  down() {
+    NodeModel.mouseHovering = true;
+
+    if(NodeModel.action === Actions.SELECT_START_POSITIONl && !this.node.isEndNode) {
+      this.node.isStartNode = true;
+      NodeModel.action = (NodeModel.action + 1) % 3;
+    }
+
+    else if(NodeModel.action === Actions.SELECT_END_POSITION && !this.node.isStartNode) {
+      this.node.isEndNode = true;
+      NodeModel.action = (NodeModel.action + 1) % 3;
+    }
+
+    else if(NodeModel.action === Actions.CREATE_WALL && !this.node.isEndNode && !this.node.isStartNode) {
+      this.node.isWall = true;
+      console.log(this.node.isWall);
+    }
+  }
+
+  @HostListener("mouseup") up() {
+    NodeModel.mouseHovering = false;
+  }
+
+  @HostListener("mousemove") hover() {
+
+    if(NodeModel.action === Actions.CREATE_WALL && !this.node.isEndNode && !this.node.isStartNode && NodeModel.mouseHovering) {
+      this.node.isWall = true;
+      console.log("should be workin :/");
+    }
   }
 
 }

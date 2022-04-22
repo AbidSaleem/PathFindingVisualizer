@@ -1,20 +1,18 @@
 div.grid {
   height: 20px;
   width: 20px;
+  user-select: none;
 }
 
-img.location {
+img.start-end-node {
   height: 15px;
   width: 15px;
   position: relative;
-  bottom: 4px;
+  bottom: 5px;
   left: 1px;
 }
 
-img.destination {
-  height: 15px;
-  width: 15px;
-  position: relative;
-  bottom: 4px;
-  left: 1px;
+
+div.wall {
+  background-color: #1A3C40;
 }

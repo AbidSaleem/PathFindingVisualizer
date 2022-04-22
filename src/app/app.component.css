@@ -1,6 +1,6 @@
 /* Algo-Play Section */
 
-h1 {
+h4 {
   color: #35858B;
 }
 
@@ -10,8 +10,8 @@ h1 {
 }
 
 .play-button {
-  height: 50px;
-  margin: 30px;
+  height: 40px;
+  margin: 20px;
   opacity: 0.8;
 }
 
@@ -21,43 +21,6 @@ h1 {
 
 .img-disable {
   opacity: 0.2;
-}
-
-/* Controls Section */
-
-.form-range {
-  width: 60px;
-  display: inline-block;
-}
-
-.speed-range::-webkit-slider-thumb {
-  background-color: #35858B;
-}
-
-.controls {
-  padding-top: 50px;
-  padding-left: 250px;
-}
-
-.faster, .slower {
-  display: inline;
-}
-
-/* Bars Section */
-
-div.barsContainer {
-  text-align: center;
-  position: relative;
-  top: 150px;
-}
-
-div.barsContainer div {
-  background-color: #35858B;
-  display: inline-block;
-  width: 15px;
-  margin: 5px;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
 }
 
 /* Navbar */
@@ -95,23 +58,25 @@ div.barsContainer div {
 "data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(250,250,250,250)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
 
-
+/* Grid Section */
 
 div.my-container {
-  position: relative;
-  top: 20px;
-  margin-left: 25px;
+  margin-left: 50px;
   margin-right: 20px;
   padding: 0;
 }
 
-div.row {
+div.grid {
+  /* margin-top: 20px; */
+}
+
+.grid-row.row {
   margin: 0px;
   height: 20px;
   padding: 0%;
 }
 
-div.column {
+.column {
   display: inline-block;
   border-color: #6998AB;
   border-style: solid;

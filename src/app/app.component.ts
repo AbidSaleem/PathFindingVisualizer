@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Actions } from './core/enums/actions.enum';
+import { Algorithms } from './core/enums/algorithms-enums';
 import {NodeModel} from './core/models/node.model';
 
 
@@ -11,12 +11,12 @@ import {NodeModel} from './core/models/node.model';
 export class AppComponent implements OnInit {
 
   grids: NodeModel[][] = [];
-  action: Actions = 0;
+  algorithm = Algorithms.NONE;
 
   constructor() {
     for(let i = 0; i < 32; i++) {
       let row:NodeModel[] = [];
-      for(let j = 0; j < 74; j++) {
+      for(let j = 0; j < 70; j++) {
         row.push(new NodeModel(false, false, false, false, i, j));
       }
       this.grids.push(row);
@@ -29,24 +29,15 @@ export class AppComponent implements OnInit {
 
   }
 
-  clicked(event: Event, node: NodeModel) {
-    if(this.action === Actions.SELECT_START_POSITIONl && !node.isEndNode) {
-      node.isStartNode = true;
-    }
-
-    else if(this.action === Actions.SELECT_END_POSITION && !node.isStartNode) {
-      node.isEndNode = true;
-    }
-
-    this.action = (this.action + 1) % 3;
-
-  }
-
   reset() {
 
   }
 
   algorithmSelected(algorthm: string) {
+
+  }
+
+  playClicked() {
 
   }
 

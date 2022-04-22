@@ -43,9 +43,21 @@
 
 <div class="my-container">
 
-  <div *ngFor="let i of grids" class="row">
-    <div *ngFor="let j of i" class="column">
-      <grid [node]="j" (click)="clicked($event, j)"></grid>
+  <div class="row">
+    <div class="col col-md-3 col-sm-12 col-12 algo-play">
+      <img class="play-button" [ngClass]="{'img-disable': !algorithm}" src="assets/icons/play-button.png" (click)="playClicked()">
+    </div>
+    <div class="col col-md-3 col-sm-12 col-12 algo-play">
+      <h4 *ngIf="!algorithm">Select an algorithm</h4>
+      <h4 *ngIf="algorithm">{{algorithm}}</h4>
+    </div>
+  </div>
+
+  <div class="row" class="grid">
+    <div *ngFor="let i of grids" class="row grid-row">
+      <div *ngFor="let j of i" class="column">
+        <grid [node]="j"></grid>
+      </div>
     </div>
   </div>
 

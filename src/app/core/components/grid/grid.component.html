@@ -1,7 +1,7 @@
-<div class="grid" >
-  <img class="location" *ngIf="node.isStartNode" src="/assets/icons/location.svg">
+<div class="grid" [ngClass]="{'wall': node.isWall === true}" >
+  <img class="start-end-node" *ngIf="node.isStartNode" src="/assets/icons/location.svg">
 
-  <img class="destination" *ngIf="node.isEndNode" src="/assets/icons/flag.svg">
+  <img class="start-end-node" *ngIf="node.isEndNode" src="/assets/icons/flag.svg">
 
 </div>
 

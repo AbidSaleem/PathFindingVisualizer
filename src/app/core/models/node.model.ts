@@ -1,5 +1,9 @@
+import { Actions } from "../enums/actions.enum";
+
 export class NodeModel {
 
+  static action: Actions = 0;
+  static mouseHovering = false;
   isStartNode: boolean;
   isEndNode: boolean;
   isWall: boolean;
@@ -24,6 +28,7 @@ export class NodeModel {
     this.row = row;
     this.column = column;
     this.distance = Infinity;
+
 
   }
 }
