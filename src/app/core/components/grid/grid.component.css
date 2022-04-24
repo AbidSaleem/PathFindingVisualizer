@@ -15,4 +15,7 @@ img.start-end-node {
 
 div.wall {
   background-color: #1A3C40;
+  position: relative;
+  right: 0.5px;
+  bottom: 1px;
 }

@@ -32,8 +32,22 @@
             class="dropdown-menu dropdown-menu-end dropdow"
             aria-labelledby="navbarDropdown"
           >
-            <li><a class="dropdown-item" href="#" (click)="algorithmSelected('Dijkstra')">Dijkstra</a></li>
-            <li><a class="dropdown-item" href="#" (click)="algorithmSelected('A*')">A*</a></li>
+            <li>
+              <a
+                class="dropdown-item"
+                href="#"
+                (click)="algorithmSelected('Dijkstra')"
+                >Dijkstra</a
+              >
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                href="#"
+                (click)="algorithmSelected('A*')"
+                >A*</a
+              >
+            </li>
           </ul>
         </li>
       </ul>
@@ -42,23 +56,56 @@
 </nav>
 
 <div class="my-container">
-
   <div class="row">
-    <div class="col col-md-3 col-sm-12 col-12 algo-play">
-      <img class="play-button" [ngClass]="{'img-disable': !algorithm}" src="assets/icons/play-button.png" (click)="playClicked()">
-    </div>
-    <div class="col col-md-3 col-sm-12 col-12 algo-play">
-      <h4 *ngIf="!algorithm">Select an algorithm</h4>
-      <h4 *ngIf="algorithm">{{algorithm}}</h4>
-    </div>
+      <div class="col col-1 play-button-container">
+        <img
+          class="play-button information-label"
+          [ngClass]="{ 'img-disable': !algorithm }"
+          src="assets/icons/play-button.png"
+          (click)="playClicked()"
+        />
+      </div>
+      <div class="col col-3 information-label">
+        <h4 *ngIf="!algorithm">Select an algorithm</h4>
+        <h4 *ngIf="algorithm">{{ algorithm }}</h4>
+      </div>
+      <div class="col col-2 information-label">
+        <div class="row">
+          <div class="col col-1">
+            <img src="assets/icons/location.svg" class="information-icons" />
+          </div>
+          <div class="col col-10">
+            <p>Starting Location</p>
+          </div>
+        </div>
+      </div>
+      <div class="col col-2 information-label">
+        <div class="row">
+          <div class="col col-1">
+            <img src="assets/icons/flag.svg" class="information-icons" />
+          </div>
+          <div class="col col-10">
+            <p>Final Location</p>
+          </div>
+        </div>
+      </div>
+      <div class="col col-2 information-label">
+        <div class="row">
+          <div class="col col-1">
+            <div class="information-icons wall"></div>
+          </div>
+          <div class="col col-10">
+            <p>Wall</p>
+          </div>
+        </div>
+      </div>
   </div>
 
-  <div class="row" class="grid">
+  <div class="row">
     <div *ngFor="let i of grids" class="row grid-row">
       <div *ngFor="let j of i" class="column">
         <grid [node]="j"></grid>
       </div>
     </div>
   </div>
-
 </div>

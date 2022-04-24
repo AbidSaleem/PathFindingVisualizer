@@ -1,17 +1,28 @@
 /* Algo-Play Section */
 
+
 h4 {
   color: #35858B;
 }
 
-.algo-play {
-  text-align: center;
-  padding: 40px 20px;
+.play-button-container {
+  margin-right: 0px;
+  padding-right: 0%;
+}
+
+.information-label {
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding-left: 0px;
+  padding-right: 20px;
 }
 
 .play-button {
   height: 40px;
-  margin: 20px;
+  margin: 20px 0px;
+  padding-left: 30px;
   opacity: 0.8;
 }
 
@@ -21,6 +32,16 @@ h4 {
 
 .img-disable {
   opacity: 0.2;
+}
+
+.information-icons {
+  height: 15px;
+  width: 15px;
+}
+
+.wall {
+  background-color: #1A3C40;
+  margin-top: 6px;
 }
 
 /* Navbar */
@@ -66,11 +87,7 @@ div.my-container {
   padding: 0;
 }
 
-div.grid {
-  /* margin-top: 20px; */
-}
-
-.grid-row.row {
+.row.grid-row {
   margin: 0px;
   height: 20px;
   padding: 0%;
