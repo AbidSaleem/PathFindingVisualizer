@@ -11,24 +11,21 @@ export class NodeModel {
   row: number;
   column: number;
   distance: number;
+  previousNode: NodeModel;
 
   constructor(
-    isStartNode = false,
-    isEndNode = false,
-    isWall = false,
-    isVisited = false,
     row: number = 0,
     column: number = 0,
   ) {
 
-    this.isStartNode = isStartNode;
-    this.isEndNode = isEndNode;
-    this.isWall = isWall;
-    this.isVisited = isVisited;
+    this.isStartNode = false;
+    this.isEndNode = false;
+    this.isWall = false;
+    this.isVisited = false;
     this.row = row;
     this.column = column;
     this.distance = Infinity;
 
-
   }
+
 }

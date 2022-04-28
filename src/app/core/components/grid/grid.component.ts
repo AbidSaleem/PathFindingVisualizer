@@ -20,8 +20,9 @@ export class GridComponent implements OnInit {
   @HostListener("mousedown")  down() {
     NodeModel.mouseHovering = true;
 
-    if(NodeModel.action === Actions.SELECT_START_POSITIONl && !this.node.isEndNode) {
+    if(NodeModel.action === Actions.SELECT_START_POSITION && !this.node.isEndNode) {
       this.node.isStartNode = true;
+      this.node.distance = 0;
       NodeModel.action = (NodeModel.action + 1) % 3;
     }
 

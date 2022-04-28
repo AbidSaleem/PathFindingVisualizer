@@ -19,3 +19,7 @@ div.wall {
   right: 0.5px;
   bottom: 1px;
 }
+
+div.visited {
+  background-color: darkslategrey;
+}
