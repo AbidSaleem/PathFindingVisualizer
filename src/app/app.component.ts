@@ -17,6 +17,9 @@ export class AppComponent implements OnInit {
   visitedNodes: NodeModel[] = [];
   pathNodes: NodeModel[] = [];
   endNodeFound = false;
+  startNode: NodeModel;
+  endNode: NodeModel;
+  heuristic: number;
 
   constructor() {
     for (let i = 0; i < 30; i++) {
@@ -48,18 +51,12 @@ export class AppComponent implements OnInit {
     }
   }
 
-  playClicked() {
+  async playClicked() {
+    this.startNode = this.allNodes.filter(n => n.isStartNode)[0];
+    this.endNode = this.allNodes.filter(n => n.isEndNode)[0];
+    this.heuristic = this.calculateHeuristic(this.startNode, this.endNode);
 
-    if(this.algorithm === Algorithms.DIJKSTRA) {
-      this.dijkstra();
-    }
-
-  }
-
-  async dijkstra() {
-    let startNode = this.allNodes.filter(n => n.isStartNode)[0];
-
-    this.unvisitedNodes.push(startNode);
+    this.unvisitedNodes.push(this.startNode);
 
     while(this.unvisitedNodes.length > 0 && !this.endNodeFound) {
       let currentNode = this.unvisitedNodes.shift();
@@ -74,21 +71,47 @@ export class AppComponent implements OnInit {
 
       node.isVisited = true;
 
-      await this.delay(50);
+      await this.delay(1);
     }
+
+    let pathNode: NodeModel = this.endNode;
+
+    while(!pathNode.isStartNode) {
+      this.pathNodes.unshift(pathNode);
+      pathNode = pathNode.previousNode;
+    }
+
+    this.startNode.isOnPath = true;
+
+    for(let node of this.pathNodes) {
+
+      node.isOnPath = true;
+
+      await this.delay(10);
+    }
+
   }
 
-  addNeighbors(node: NodeModel) {
+  async addNeighbors(node: NodeModel) {
 
     if(node) {
 
-      this.addNeighbor(this.grids[node.row - 1][node.column], node);
+      try {
+        this.addNeighbor(this.grids[node.row - 1][node.column], node);
 
-      this.addNeighbor(this.grids[node.row + 1][node.column], node);
+      } catch {}
+      try {
+        this.addNeighbor(this.grids[node.row + 1][node.column], node);
 
-      this.addNeighbor(this.grids[node.row][node.column + 1], node);
+      } catch {}
+      try {
+        this.addNeighbor(this.grids[node.row][node.column + 1], node);
 
-      this.addNeighbor(this.grids[node.row][node.column - 1], node);
+      } catch {}
+      try {
+        this.addNeighbor(this.grids[node.row][node.column - 1], node);
+
+      } catch {}
     }
   }
 
@@ -99,7 +122,14 @@ export class AppComponent implements OnInit {
       if(neighbor.distance > node.distance + 1) {
         neighbor.distance = node.distance + 1;
         neighbor.previousNode = node;
-        this.unvisitedNodes.push(neighbor);
+
+        if(this.algorithm === Algorithms.DIJKSTRA) {
+          this.dijkstra(neighbor);
+        }
+
+        else if(this.algorithm === Algorithms.A_STAR) {
+          this.a_star(neighbor);
+        }
       }
 
       if(neighbor.isEndNode) {
@@ -107,8 +137,25 @@ export class AppComponent implements OnInit {
         neighbor.previousNode = node;
         this.visitedNodes.push(neighbor);
       }
-
     }
+  }
+
+
+  dijkstra(neighbor: NodeModel) {
+    this.unvisitedNodes.push(neighbor);
+  }
+
+  a_star(neighbor: NodeModel) {
+
+    let currentHeuristic = this.calculateHeuristic(neighbor, this.endNode);
+    neighbor.f_score = neighbor.distance + currentHeuristic;
+
+    this.unvisitedNodes.push(neighbor);
+    this.unvisitedNodes.sort((a, b) => a.f_score - b.f_score);
+  }
+
+  calculateHeuristic(node: NodeModel, endNode: NodeModel) {
+    return Math.abs(node.row - endNode.row) + Math.abs(node.column - endNode.column);
   }
 
   delay(ms: number) {

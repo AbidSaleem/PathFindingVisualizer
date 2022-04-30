@@ -1,4 +1,4 @@
-<div class="grid" [ngClass]="{'wall': node.isWall === true, 'visited': node.isVisited === true}" >
+<div class="grid" [ngClass]="{'wall': node.isWall, 'visited': node.isVisited, 'isOnPath': node.isOnPath}" >
   <img class="start-end-node" *ngIf="node.isStartNode" src="/assets/icons/location.svg">
 
   <img class="start-end-node" *ngIf="node.isEndNode" src="/assets/icons/flag.svg">

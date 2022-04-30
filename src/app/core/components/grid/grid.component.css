@@ -13,6 +13,17 @@ img.start-end-node {
 }
 
 
+/* div.wall {
+  background-color: #1A3C40;
+  position: relative;
+  right: 0.5px;
+  bottom: 1px;
+}
+
+div.visited {
+  background-color: #417D7A;
+} */
+
 div.wall {
   background-color: #1A3C40;
   position: relative;
@@ -21,5 +32,13 @@ div.wall {
 }
 
 div.visited {
-  background-color: darkslategrey;
+  /* background-color: #35857B; */
+  background-color: #B1D0E0;
+}
+
+
+div.isOnPath {
+  /* background-color: #CDBE78; */
+  background-color: #ECB365;
+
 }

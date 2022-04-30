@@ -8,10 +8,12 @@ export class NodeModel {
   isEndNode: boolean;
   isWall: boolean;
   isVisited: boolean;
+  isOnPath: boolean;
   row: number;
   column: number;
   distance: number;
   previousNode: NodeModel;
+  f_score: number;
 
   constructor(
     row: number = 0,
@@ -25,7 +27,6 @@ export class NodeModel {
     this.row = row;
     this.column = column;
     this.distance = Infinity;
-
   }
 
 }
